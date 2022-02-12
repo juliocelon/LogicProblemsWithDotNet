@@ -1,13 +1,13 @@
 ﻿using System;
 namespace Recursions
 {
-    public class RecursionExercises
+    public class RecursionCase
     {
-        public static void printMessage50times(string message, int times)
+        public static void PrintMessage50times(string message, int times)
         {
             Console.WriteLine("{0}. {1}", times, message);
             if (times < 50)
-                printMessage50times(message, times + 1);
+                PrintMessage50times(message, times + 1);
         }
     }
 }
