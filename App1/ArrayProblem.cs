@@ -79,5 +79,35 @@ namespace Arrays
 
             Console.WriteLine("Most Frecuent number is [{0}], it is [{1}] times", maximum[0], maximum[1]);
         }
+
+        //Function that returns the common elements (as an array)
+        // between two sorted arrays of integers (ascending order)
+        public static void CommonElements(int[] array1, int[] array2)
+        {
+            ArrayList commonElements = new ArrayList();
+            int array1Pointer = 0;
+            int array2Pointer = 0;
+
+            while (array1Pointer < array1.Length && array2Pointer < array2.Length)
+            {
+                if (array1[array1Pointer] == array2[array2Pointer])
+                {
+                    commonElements.Add(array1[array1Pointer]);
+                    array1Pointer++;
+                    array2Pointer++;
+                }
+                else if (array1[array1Pointer] > array2[array2Pointer])
+                    array2Pointer++;
+                else
+                    array1Pointer++;
+            }
+
+            Console.WriteLine("Common Elements:");
+            foreach (var item in commonElements)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
     }
 }
