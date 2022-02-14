@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Arrays
 {
@@ -82,7 +83,7 @@ namespace Arrays
 
         //Function that returns the common elements (as an array)
         // between two sorted arrays of integers (ascending order)
-        public static void CommonElements(int[] array1, int[] array2)
+        public static ArrayList CommonElements(int[] array1, int[] array2)
         {
             ArrayList commonElements = new ArrayList();
             int array1Pointer = 0;
@@ -107,7 +108,113 @@ namespace Arrays
             {
                 Console.WriteLine(item);
             }
+            return commonElements;
+        }
 
+        public static void FizzBuzz(int n)
+        {
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 3 == 0)
+                {
+                    if (i % 5 == 0)
+                        Console.WriteLine("FizzBuzz");
+                    else
+                        Console.WriteLine("Fizz");
+                }
+                else
+                {
+                    if(i%5==0)
+                        Console.WriteLine("Buzz");
+                    else
+                        Console.WriteLine(i);
+                }
+            }
+        }
+
+        /* Disk Space Analysis
+
+        A company is performing an analysis on the computers at its main office. The computers are spaced along a single row.
+        For each group of contiguous computers of a certaint length, that is, for each segment, determine the minimum amount
+        of disk space available on a computer. Return the maximum of these values as your answer.
+
+        Example.
+        n = 4 , number of computers
+        space = [8,2, 4, 6]
+        x = 2, the segment length
+
+        The free disk space of computers in each of the segments is [8,2], [2,4] and [4,6].
+        The minima of the three segments are [2, 2, 4].
+        The maximum of these is 4.
+
+        Function Description
+
+        Complete the function Segment
+
+        Segment has the following parameters:
+        int x: the segment length to analyze
+        int space[n]: the available hard disk space on each of the computers
+
+        Returns:
+        int: The maximum of the minimum values of available hard disk space found while analyzing the computers in segments of
+        length x.
+
+        Example Case:
+
+        length of segments x = 3
+        size of space = 5
+        space = [2, 5, 4, 6, 8]
+
+        Explanation:
+
+        The segments of size x=3 are: [2,5,4] , [5,4,6] and [4,6,8]
+        The respective minimum values are: 2,4,4
+        The maximum of these values is 4
+        */
+
+        public static int Segment(int x, List<int> space)
+        {
+            int numberOfSegments = space.Count -  (x - 1);
+
+            Console.WriteLine("Input:");
+            Console.WriteLine("Number of Elements : [{0}]", space.Count);
+            Console.WriteLine("Length of each segment: [{0}]\n", x);
+            Console.WriteLine("Number of segments calculated: [{0}]\n", numberOfSegments);
+
+            int minValue = space[0];
+            int maxValue = 0;
+
+            int innerSegmentPointer = 0; 
+            int nextSegmentPointer = 0;
+
+            while (nextSegmentPointer < numberOfSegments) 
+            {
+
+                if (innerSegmentPointer == x)
+                {
+                    innerSegmentPointer = 0;
+                    nextSegmentPointer++;
+
+                    Console.WriteLine("Min Value of the segment = [{0}]", minValue);
+                    Console.WriteLine();
+
+                    if (maxValue < minValue)
+                        maxValue = minValue;
+
+                    minValue = space[nextSegmentPointer + innerSegmentPointer];
+                }
+
+                if (minValue > space[nextSegmentPointer + innerSegmentPointer])
+                    minValue = space[nextSegmentPointer + innerSegmentPointer];
+
+                if (nextSegmentPointer < numberOfSegments)
+                    Console.WriteLine("{0}. {1}.", innerSegmentPointer, space[nextSegmentPointer + innerSegmentPointer]);
+
+                innerSegmentPointer += 1;
+            } 
+
+            Console.WriteLine("Max Value = [{0}]", maxValue);
+            return maxValue;
         }
     }
 }
