@@ -111,27 +111,6 @@ namespace Arrays
             return commonElements;
         }
 
-        public static void FizzBuzz(int n)
-        {
-            for (int i = 1; i <= n; i++)
-            {
-                if (i % 3 == 0)
-                {
-                    if (i % 5 == 0)
-                        Console.WriteLine("FizzBuzz");
-                    else
-                        Console.WriteLine("Fizz");
-                }
-                else
-                {
-                    if(i%5==0)
-                        Console.WriteLine("Buzz");
-                    else
-                        Console.WriteLine(i);
-                }
-            }
-        }
-
         /* Disk Space Analysis
 
         A company is performing an analysis on the computers at its main office. The computers are spaced along a single row.
@@ -172,7 +151,7 @@ namespace Arrays
         The maximum of these values is 4
         */
 
-        public static int Segment(int x, List<int> space)
+        public static int Segment(int x, List<int> space) // Function using a while
         {
             int numberOfSegments = space.Count -  (x - 1);
 
@@ -212,6 +191,46 @@ namespace Arrays
 
                 innerSegmentPointer += 1;
             } 
+
+            Console.WriteLine("Max Value = [{0}]", maxValue);
+            return maxValue;
+        }
+
+        public static int Segment2(int x, List<int> space) // Function using a for
+        {
+            int numberOfSegments = space.Count - (x - 1);
+
+            Console.WriteLine("Input:");
+            Console.WriteLine("Number of Elements : [{0}]", space.Count);
+            Console.WriteLine("Length of each segment: [{0}]\n", x);
+            Console.WriteLine("Number of segments calculated: [{0}]\n", numberOfSegments);
+
+            int minValue = space[0];
+            int maxValue = 0;
+
+            for (int nextSegmentPointer = 0, innerSegmentPointer = 0; nextSegmentPointer < numberOfSegments; innerSegmentPointer++)
+            {
+                if (innerSegmentPointer == x)
+                {
+                    innerSegmentPointer = 0;
+                    nextSegmentPointer++;
+
+                    Console.WriteLine("Min Value of the segment = [{0}]", minValue);
+                    Console.WriteLine();
+
+                    if (maxValue < minValue)
+                        maxValue = minValue;
+
+                    minValue = space[nextSegmentPointer + innerSegmentPointer];
+                }
+
+                if (minValue > space[nextSegmentPointer + innerSegmentPointer])
+                    minValue = space[nextSegmentPointer + innerSegmentPointer];
+
+                if (nextSegmentPointer < numberOfSegments)
+                    Console.WriteLine("{0}. {1}.", innerSegmentPointer, space[nextSegmentPointer + innerSegmentPointer]);
+
+            }
 
             Console.WriteLine("Max Value = [{0}]", maxValue);
             return maxValue;

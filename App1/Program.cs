@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Arrays;
 using Recursions;
 
-namespace LogicProblems
+namespace Logic
 {
     class Program
     {
@@ -21,17 +21,21 @@ namespace LogicProblems
 
             ArrayCase.CommonElements(new int[] { 1, 2, 3, 4, 5, 14, 15, 25, 27 }, new int[] { 2, 4, 6, 8, 10, 14, 15, 27, 28, 29, 30 });
 
-            RecursionCase.PrintMessage50times("Hello World", 1);
-
-            ArrayCase.FizzBuzz(20);
-
             List<int> list = new List<int>();
             list.Add(2);
             list.Add(5);
             list.Add(4);
             list.Add(6);
             list.Add(8);
-            ArrayCase.Segment(3,list);
+            ArrayCase.Segment2(3, list);
+
+            RecursionCase.PrintMessage50times("Hello World", 1);
+
+            LogicProblems.FizzBuzz(20);
+
+            LogicProblems.MostEfficientLoop(10);
+
+            LogicProblems.PrintArray(new int[] { 10, 20 });
         }
     }
 
