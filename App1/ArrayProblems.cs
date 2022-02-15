@@ -241,13 +241,14 @@ namespace Arrays
             if (array1.Length != array2.Length)
                 return false;
 
-            bool findFirst = false;
+            bool firstElementFounded = false;
             for (int i = 0, j=0; i < array1.Length;)
             {
                 if (array1[i] == array2[j])
                 {
-                    if (findFirst == false)
-                        findFirst = true;
+                    if (firstElementFounded == false)
+                        firstElementFounded = true;
+
                     i++;
 
                     if (j == array2.Length - 1)
@@ -257,19 +258,13 @@ namespace Arrays
                 }
                 else
                 {
-                    if (findFirst == true)
-                    {
-                        Console.WriteLine("No existe segundo elemento");
+                    if (firstElementFounded == true)
                         return false;
-                    }
 
                     if (j == array2.Length - 1)
                     {
-                        if (findFirst == false)
-                        {
-                            Console.WriteLine("No existe ni el primer elemento");
+                        if (firstElementFounded == false)
                             return false;
-                        }
                         j = 0;
                     }
                     else
@@ -277,6 +272,47 @@ namespace Arrays
                 }
             }
             return true;
+        }
+
+        public static bool IsArrayRotationV2(int[] array1, int[] array2) // using % to control variable j
+        {
+            if (array1.Length != array2.Length)
+                return false;
+
+            bool firstElementFounded = false;
+            for (int i = 0, j = 0; i < array1.Length;)
+            {
+                if (array1[i] == array2[j])
+                {
+                    if (firstElementFounded == false)
+                        firstElementFounded = true;
+                    i++;
+                }
+                else
+                {
+                    if (firstElementFounded == true)
+                        return false;
+
+                    if (j == array2.Length - 1)
+                    {
+                        if (firstElementFounded == false)
+                            return false;
+                    }
+                }
+
+                j = (j + 1) % array2.Length; // using module to increment j
+            }
+            return true;
+        }
+
+        public static void ModuleUse()
+        {
+            int[] a1 = { 1, 2, 3, 4, 5, 6 };
+
+            for (int i = 0; i < 50; i++)
+            {
+                Console.WriteLine("i=[{0}], i%{1}=[{2}], array[{2}]=[{3}]",i, a1.Length, i % a1.Length, a1[i % a1.Length]);
+            }
         }
     }
 }
