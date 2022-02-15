@@ -235,5 +235,48 @@ namespace Arrays
             Console.WriteLine("Max Value = [{0}]", maxValue);
             return maxValue;
         }
+
+        public static bool IsArrayRotation(int[] array1, int[] array2)
+        {
+            if (array1.Length != array2.Length)
+                return false;
+
+            bool findFirst = false;
+            for (int i = 0, j=0; i < array1.Length;)
+            {
+                if (array1[i] == array2[j])
+                {
+                    if (findFirst == false)
+                        findFirst = true;
+                    i++;
+
+                    if (j == array2.Length - 1)
+                        j = 0;
+                    else
+                        j++;
+                }
+                else
+                {
+                    if (findFirst == true)
+                    {
+                        Console.WriteLine("No existe segundo elemento");
+                        return false;
+                    }
+
+                    if (j == array2.Length - 1)
+                    {
+                        if (findFirst == false)
+                        {
+                            Console.WriteLine("No existe ni el primer elemento");
+                            return false;
+                        }
+                        j = 0;
+                    }
+                    else
+                        j++;
+                }
+            }
+            return true;
+        }
     }
 }

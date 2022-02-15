@@ -29,6 +29,8 @@ namespace Logic
             list.Add(8);
             ArrayCase.Segment2(3, list);
 
+            Console.WriteLine(ArrayCase.IsArrayRotation(new int[] { 1, 2, 3, 4 }, new int[] { 4, 1, 2, 3 }));
+
             RecursionCase.PrintMessage50times("Hello World", 1);
 
             LogicProblems.FizzBuzz(20);
@@ -36,6 +38,8 @@ namespace Logic
             LogicProblems.MostEfficientLoop(10);
 
             LogicProblems.PrintArray(new int[] { 10, 20 });
+
+
         }
     }
 
