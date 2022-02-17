@@ -12,7 +12,7 @@ namespace Arrays
 
             for (int i = 0; i < array.Length; i++)
             {
-                if (goal % array[i] == 0)
+                if (goal % array[i] == 0) // integer division
                 {
                     int multipleNumber = goal / array[i];
                     if (ht.ContainsValue(multipleNumber))
@@ -153,7 +153,7 @@ namespace Arrays
 
         public static int Segment(int x, List<int> space) // Function using a while
         {
-            int numberOfSegments = space.Count -  (x - 1);
+            int numberOfSegments = space.Count - (x - 1);
 
             Console.WriteLine("Input:");
             Console.WriteLine("Number of Elements : [{0}]", space.Count);
@@ -163,10 +163,10 @@ namespace Arrays
             int minValue = space[0];
             int maxValue = 0;
 
-            int innerSegmentPointer = 0; 
+            int innerSegmentPointer = 0;
             int nextSegmentPointer = 0;
 
-            while (nextSegmentPointer < numberOfSegments) 
+            while (nextSegmentPointer < numberOfSegments)
             {
 
                 if (innerSegmentPointer == x)
@@ -190,7 +190,7 @@ namespace Arrays
                     Console.WriteLine("{0}. {1}.", innerSegmentPointer, space[nextSegmentPointer + innerSegmentPointer]);
 
                 innerSegmentPointer += 1;
-            } 
+            }
 
             Console.WriteLine("Max Value = [{0}]", maxValue);
             return maxValue;
@@ -242,7 +242,7 @@ namespace Arrays
                 return false;
 
             bool firstElementFounded = false;
-            for (int i = 0, j=0; i < array1.Length;)
+            for (int i = 0, j = 0; i < array1.Length;)
             {
                 if (array1[i] == array2[j])
                 {
@@ -305,14 +305,71 @@ namespace Arrays
             return true;
         }
 
-        public static void ModuleUse()
+        public static void Minesweeper(int[,] bombs, int rows, int columns)
         {
-            int[] a1 = { 1, 2, 3, 4, 5, 6 };
+            int[,] a2 = new int[rows, columns];
 
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < bombs.GetLength(0); i++)
             {
-                Console.WriteLine("i=[{0}], i%{1}=[{2}], array[{2}]=[{3}]",i, a1.Length, i % a1.Length, a1[i % a1.Length]);
+                a2[bombs[i, 0], bombs[i, 1]] = -1;
+                Console.WriteLine();
             }
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    if (a2[i, j] == -1)
+                    {
+                        if (i - 1 >= 0)
+                        {
+                            if (j - 1 >= 0)
+                                if (a2[i - 1, j - 1] != -1)
+                                    a2[i - 1, j - 1] += 1;
+
+                            if (a2[i - 1, j] != -1)
+                                a2[i - 1, j] += 1;
+
+                            if (j + 1 < columns)
+                                if (a2[i - 1, j + 1] != -1)
+                                    a2[i - 1, j + 1] += 1;
+                        }
+
+                        if (j - 1 >= 0)
+                            if (a2[i, j - 1] != -1)
+                                a2[i, j - 1] += 1;
+
+                        if (j + 1 < columns)
+                            if (a2[i, j + 1] != -1)
+                                a2[i, j + 1] += 1;
+
+                        if (i + 1 < rows)
+                        {
+                            if (j - 1 >= 0)
+                                if (a2[i + 1, j - 1] != -1)
+                                    a2[i + 1, j - 1] += 1;
+
+                            if (a2[i + 1, j] != -1)
+                                a2[i + 1, j] += 1;
+
+                            if (j + 1 < columns)
+                                if (a2[i + 1, j + 1] != -1)
+                                    a2[i + 1, j + 1] += 1;
+                        }
+
+                    }
+                }
+            }
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    Console.Write(" [{0,2}] ", a2[i, j]);
+                }
+                Console.WriteLine();
+            }
+
         }
     }
 }

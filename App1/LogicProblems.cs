@@ -33,7 +33,7 @@ namespace Logic
             }
 
             Console.WriteLine("int i = 0; i < n; i = i+2");
-            for (int i = 0; i < n; i = i+2)
+            for (int i = 0; i < n; i = i + 2)
             {
                 Console.WriteLine(i);
             }
@@ -62,6 +62,16 @@ namespace Logic
                 {
                     Console.WriteLine(a[i]);
                 } while (++i < len);
+            }
+        }
+
+        public static void ModuleUse()
+        {
+            int[] a1 = { 1, 2, 3, 4, 5, 6 };
+
+            for (int i = 0; i < 50; i++)
+            {
+                Console.WriteLine("i=[{0}], i%{1}=[{2}], array[{2}]=[{3}]", i, a1.Length, i % a1.Length, a1[i % a1.Length]);
             }
         }
     }

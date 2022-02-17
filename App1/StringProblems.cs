@@ -10,7 +10,7 @@ namespace LogicProblems
         {
             Hashtable ht = new Hashtable();
             List<char> list = new List<char>();
-            
+
             for (int i = 0; i < message.Length; i++)
             {
                 if (ht.ContainsKey(message[i]))
@@ -25,7 +25,7 @@ namespace LogicProblems
                 }
             }
 
-            if(list.Count>0)
+            if (list.Count > 0)
                 Console.WriteLine("Message:[{0}], first character no repeated:[{1}]", message, list[0]);
             else
                 Console.WriteLine("Message:[{0}], There isn´t no repeating character", message);
@@ -59,7 +59,6 @@ namespace LogicProblems
                         failCounter++;
                 }
             }
-
             Console.WriteLine("Is One away: [{0}],[{1}]", message1, message2);
             return true;
         }
@@ -67,15 +66,12 @@ namespace LogicProblems
         public static bool IsOneAwayDifferentLength(string message1, string message2)
         {
             // lenght of message1 should be lesser than lenght of message2
-
             int lenghtDifference = message2.Length - message1.Length;
-
             if (lenghtDifference >= 2)
             {
                 Console.WriteLine("No Is One away: [{0}],[{1}]. They have different length.", message1, message2);
                 return false;
             }
-
             int failCounter = 0;
             for (int i = 0, j = 0; i < message1.Length;)
             {
@@ -88,7 +84,6 @@ namespace LogicProblems
                     }
                     else
                         failCounter++;
-
                     j++;
                 }
                 else
@@ -96,9 +91,7 @@ namespace LogicProblems
                     i++;
                     j++;
                 }
-
             }
-
             Console.WriteLine("Is One away: [{0}],[{1}]", message1, message2);
             return true;
         }
