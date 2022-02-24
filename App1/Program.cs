@@ -18,7 +18,7 @@ namespace Logic
 
             //ArrayCase.CutArray(new int[] { 1, 3, 5, 2, 5, 3 }, 2);
 
-            //ArrayCase.GetMostFrecuent(new int[] { 1, 2, 3, 2, 2, 4 });
+            //ArrayCase.GetMostFrecuentNumber(new int[] { 1, 2, 3, 2, 2, 4 });
 
             //ArrayCase.CommonElements(new int[] { 1, 2, 3, 4, 5, 14, 15, 25, 27 }, new int[] { 2, 4, 6, 8, 10, 14, 15, 27, 28, 29, 30 });
 
@@ -47,8 +47,44 @@ namespace Logic
 
             //LogicProblems.PrintArray(new int[] { 10, 20 });
 
-            ArrayCase.Minesweeper(new int[,] { { 0, 0 }, { 0, 2 }, { 0, 1 }, { 2, 1 }, { 2, 1 }, { 3, 3 } }, 4, 4);
+            //ArrayCase.Minesweeper(new int[,] { { 0, 0 }, { 0, 2 }, { 0, 1 }, { 2, 1 }, { 2, 1 }, { 3, 3 } }, 4, 4);
 
+            //List<int> arr1 = new List<int>();
+            //arr1.Add(123);
+            //arr1.Add(456);
+
+            //List<int> arr2 = new List<int>();
+            //arr2.Add(789);
+            //arr2.Add(888);
+
+            //ArrayCase.minimumMoves(arr1, arr2);
+
+            //ArrayCase.GetDigits(2468);
+            //ArrayCase.GetDigitsOnIntArray(3463);
+
+            //ArrayCase.GetMostFrecuentCharacter("holaa");
+
+            //ArrayCase.LongestVowelSubsequence("aeiooua");
+
+            //Console.WriteLine(RecursionCase.Factorial(5));
+            //Console.WriteLine(RecursionCase.Fibonacci(5));
+            //LogicProblems.Fibonacci(5);
+
+            //ArrayCase.Piramid();
+
+            SinglyLinkedList binary = new SinglyLinkedList();
+
+            Console.WriteLine("Insert number of Elements;");
+            int binaryCount = Convert.ToInt32(Console.ReadLine().Trim());
+
+            for (int i = 0; i < binaryCount; i++)
+            {
+                Console.WriteLine("Element:");
+                int binaryItem = Convert.ToInt32(Console.ReadLine().Trim());
+                binary.InsertNode(binaryItem);
+            }
+            Console.WriteLine("Listooo");
+            long result = Result.getNumber(binary.head);
         }
     }
 

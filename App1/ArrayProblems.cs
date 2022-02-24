@@ -59,7 +59,7 @@ namespace Arrays
             return newArray;
         }
 
-        public static void GetMostFrecuent(int[] input)
+        public static void GetMostFrecuentNumber(int[] input)
         {
             Hashtable ht = new Hashtable();
             int[] maximum = { 0, 0 };
@@ -79,6 +79,28 @@ namespace Arrays
             }
 
             Console.WriteLine("Most Frecuent number is [{0}], it is [{1}] times", maximum[0], maximum[1]);
+        }
+
+        public static char GetMostFrecuentCharacter(string text)
+        {
+            Hashtable ht = new Hashtable();
+            char character = ' ' ;
+            int amount = 0;
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (ht.ContainsKey(text[i]))
+                    ht[text[i]] = (int)ht[text[i]] + 1;
+                else
+                    ht.Add(text[i], 1);
+
+                if ((int)ht[text[i]] > amount)
+                {
+                    character = text[i];
+                    amount = (int)ht[text[i]];
+                }
+            }
+            return character;
         }
 
         //Function that returns the common elements (as an array)
@@ -305,6 +327,72 @@ namespace Arrays
             return true;
         }
 
+
+        // Minimum moves between 2 arrays, arr1 to change, arr2 to match foreach digit.
+        // Example.
+        // arr1 = {123,456}
+        // arr2 = {223,557}
+        // To make arr1 equal to arr2, you should:
+        // 1. increment in one, arr1[0] on position [0], I mean: 1 to 2, 1 move
+        // 2. increment in one, arr1[1] on position [0] and [2], I mean: 4 to 5, and 6 to 7, 2 moves
+        // Total moves=3 moves
+        public static int minimumMoves(List<int> arr1, List<int> arr2)
+        {
+            int counter = 0;
+
+            for (int i = 0; i < arr1.Count; i++)
+            {
+                List<char> digitsArr1 = new List<char>();
+                foreach (char digit in arr1[i].ToString())
+                    digitsArr1.Add(digit);
+
+                List<char> digitsArr2 = new List<char>();
+                foreach (char digit in arr2[i].ToString())
+                    digitsArr2.Add(digit);
+
+                for (int j = 0; j < digitsArr1.Count; j++)
+                {
+                    int digitArr1 = Convert.ToInt32(digitsArr1[j]);
+                    int digitArr2 = Convert.ToInt32(digitsArr2[j]);
+                    if (digitArr1 > digitArr2)
+                        counter += digitArr1 - digitArr2;
+                    else if (digitsArr1[j] < digitsArr2[j])
+                        counter += digitArr2 - digitArr1;
+                }
+            }
+            return counter;
+        }
+
+        public static List<int> GetDigits(int number)
+        {
+            Console.WriteLine("Getdigits, input=[{0}]", number);
+            List<int> digits = new List<int>();
+            while (number > 0)
+            {
+                digits.Add(number % 10);
+                Console.WriteLine("number % 10=[{0}]", number % 10);
+                Console.WriteLine("number / 10=[{0}]", number / 10);
+                number = number / 10;
+            }
+            digits.Reverse();
+            return digits;
+        }
+
+        public static int[] GetDigitsOnIntArray(int number)
+        {
+            Console.WriteLine("Getdigits, input=[{0}]", number);
+            int[] digits = new int[number.ToString().Length];
+            int i = 0;
+            while (number > 0)
+            {
+                digits[i] = number % 10;
+                Console.WriteLine("number % 10=[{0}]", number % 10);
+                Console.WriteLine("number / 10=[{0}]", number / 10);
+                number = number / 10;
+            }
+            return digits;
+        }
+
         public static void Minesweeper(int[,] bombs, int rows, int columns)
         {
             int[,] a2 = new int[rows, columns];
@@ -371,5 +459,130 @@ namespace Arrays
             }
 
         }
+
+        // Given a string, determine the length of the longest subsequence that contains all of the vowels,
+        //  in order, and no vowels out of order. Vowels in order are the letters in the string 'aeiou'
+        // Example:
+        // the string aeeiiouu contains all vowels in order.
+        // the string aeeiiaouu does not.
+        // The function should return the length of the longest subsequence within the input string that
+        //  containcs all of the vowels in roder.
+        //  If one does not occur in the string, return 0
+
+        public static int LongestVowelSubsequence(string text)
+        {
+            Hashtable ht = new Hashtable();// id and length
+            int htId = 0;
+
+            int subsequenceCounter = 0;
+            int maxSubsecuenceCounter = 0;
+
+            char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+            int vowelsPointer = 0;
+
+            bool subsequenceOn = false;
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                Console.WriteLine(">>[{0}]", text[i]);
+                Console.WriteLine(">>counter=[{0}]", subsequenceCounter);
+                Console.WriteLine(">>maxcounter=[{0}]", maxSubsecuenceCounter);
+
+                if (text[i] == vowels[vowelsPointer] )
+                {
+                    Console.WriteLine("text[i] == vowels[vowelsPointer]");
+                    if (vowels[vowelsPointer] == 'u' && i==text.Length-1)
+                    {
+                        Console.WriteLine("vowels[vowelsPointer] == 'u' && i==text.Length-1");
+                        subsequenceCounter++;
+                        Console.WriteLine("Ya esta en la u");
+                        if (maxSubsecuenceCounter < subsequenceCounter)
+                            maxSubsecuenceCounter = subsequenceCounter;
+                        subsequenceOn = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("ELSE vowels[vowelsPointer] == 'u' && i==text.Length-1");
+                        subsequenceCounter++;
+                        subsequenceOn = true;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("ELSE text[i] == vowels[vowelsPointer]");
+                        if (i == text.Length - 1)
+                        {
+                        Console.WriteLine("i == text.Length - 1");
+                            if (vowels[(vowelsPointer+1)%vowels.Length] == 'u')
+                            {
+                            Console.WriteLine("vowels[vowelsPointer] == 'u'");
+                            subsequenceCounter++;
+                                Console.WriteLine("Ya esta en la u");
+                                if (maxSubsecuenceCounter < subsequenceCounter)
+                                    maxSubsecuenceCounter = subsequenceCounter;
+                            }
+                            subsequenceOn = false;
+                            vowelsPointer = 0;
+                            subsequenceCounter = 0;
+                        }
+                        else
+                        {
+                            if (text[i] == vowels[(vowelsPointer + 1)%vowels.Length])
+                            {
+                                Console.WriteLine("siguiente vocal ok");
+                                subsequenceOn = true;
+                                subsequenceCounter++;
+                                vowelsPointer++;
+                                if (vowels[vowelsPointer] == 'u' && i == text.Length - 1)
+                                {
+                                    Console.WriteLine("vowels[vowelsPointer] == 'u' && i==text.Length-1");
+                                    subsequenceCounter++;
+                                    Console.WriteLine("Ya esta en la u");
+                                    if (maxSubsecuenceCounter < subsequenceCounter)
+                                        maxSubsecuenceCounter = subsequenceCounter;
+                                subsequenceOn = false;
+                            }
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Termina la secuencia");
+                                subsequenceOn = false;
+                                vowelsPointer = 0;
+                                subsequenceCounter = 0;
+                            }
+                        }
+                }
+            }
+
+            Console.WriteLine(maxSubsecuenceCounter);
+
+            return 0;
+        }
+
+        public static void Piramid()
+        {
+            int space, startsLength = 1, numberRows;
+            Console.WriteLine("Enter row count : ");       
+            numberRows = Convert.ToInt32(Console.ReadLine());   
+            space = numberRows - 1;                            
+
+            for (int i = 1; i <= numberRows; i++)
+            {
+                for (int r = 1; r <= space; r++)
+                {
+                    Console.Write(" ");
+                }
+                for (int s = 1; s <= startsLength; s++)
+                {
+                    Console.Write("*");
+                }
+                space--;
+                startsLength = startsLength + 2;
+                Console.WriteLine();
+            }
+            Console.ReadLine();
+        }
+
     }
 }
