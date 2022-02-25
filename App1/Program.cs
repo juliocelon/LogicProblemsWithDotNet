@@ -72,19 +72,22 @@ namespace Logic
 
             //ArrayCase.Piramid();
 
-            SinglyLinkedList binary = new SinglyLinkedList();
+            //SinglyLinkedList binary = new SinglyLinkedList();
 
-            Console.WriteLine("Insert number of Elements;");
-            int binaryCount = Convert.ToInt32(Console.ReadLine().Trim());
+            //Console.WriteLine("Insert number of Elements;");
+            //int binaryCount = Convert.ToInt32(Console.ReadLine().Trim());
 
-            for (int i = 0; i < binaryCount; i++)
-            {
-                Console.WriteLine("Element:");
-                int binaryItem = Convert.ToInt32(Console.ReadLine().Trim());
-                binary.InsertNode(binaryItem);
-            }
-            Console.WriteLine("Listooo");
-            long result = Result.getNumber(binary.head);
+            //for (int i = 0; i < binaryCount; i++)
+            //{
+            //    Console.WriteLine("Element {0}:", i);
+            //    int binaryItem = Convert.ToInt32(Console.ReadLine().Trim());
+            //    binary.InsertNode(binaryItem);
+            //}
+            //long result = Result.getNumber(binary.head);
+
+            //LogicProblems.timeConversion("01:02:03PM");
+            LogicProblems.timeConversion("04:02:03PM");
+            //LogicProblems.timeConversion("05:02:03PM");
         }
     }
 
