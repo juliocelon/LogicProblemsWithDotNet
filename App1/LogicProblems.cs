@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Logic
@@ -182,6 +183,172 @@ namespace Logic
             Console.WriteLine("Time New=[{0}]", hourNewformat);
 
             return hourNewformat;
+        }
+
+        public static int findMedian(List<int> arr)
+        {
+            Console.WriteLine("Input, unsorted array:");
+            foreach (var item in arr)
+            {
+                Console.WriteLine(item);
+            }
+
+            bool change = true;
+            while (change)
+            {
+                change = false;
+                for (int i = 0; i < arr.Count; i++)
+                {
+                    if (i < arr.Count - 1)
+                    {
+                        if (arr[i] > arr[i + 1])
+                        {
+                            change = true;
+                            int temp = arr[i + 1];
+                            arr[i + 1] = arr[i];
+                            arr[i] = temp;
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine("Sorted array:");
+            foreach (var item in arr)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("Median=[{0}]", arr[arr.Count / 2]);
+            return arr[arr.Count/2];
+        }
+
+        public static int findMedian2(List<int> arr)
+        {
+            int[] a = new int[arr.Count];
+            for (int i = 0; i < arr.Count; i++)
+            {
+                a[i] = arr[i];
+            }
+            Array.Sort(a);
+
+            Console.WriteLine("Median=[{0}]", a[a.Length / 2]);
+            return a[a.Length / 2];
+        }
+
+        public static int findMedian3(List<int> arr)
+        {
+            arr.Sort();
+            Console.WriteLine("Median=[{0}]", arr[arr.Count / 2]);
+            return arr[arr.Count / 2];
+        }
+
+        public static int lonelyinteger(List<int> a)
+        {
+            Hashtable ht = new Hashtable();
+
+            foreach (var item in a)
+            {
+                if (ht.ContainsKey(item))
+                    ht.Remove(item);
+                else
+                    ht.Add(item, 1);
+            }
+
+            foreach (var item in ht.Keys)
+                return (int)item;
+
+            return 0;
+        }
+
+        //Input: List arr with: arr[0] << number of square, arr[1] << the list of the numbers.
+        public static int diagonalDifference(List<List<int>> arr)
+        {
+            List<int> elements = arr[1];
+            int size = arr[0][0];
+            int leftToRigth = 0;
+            int rigthToLeft = 0;
+
+            for (int i = 0; i < elements.Count;i++)
+            {
+                Console.WriteLine(elements[i]);
+                if (i % (size + 1) == 0 || i==0)
+                {
+                    Console.WriteLine("LeftToRigth partial sum= [{0}]", elements[i]);
+                    leftToRigth += elements[i];
+                }
+
+                if (i % (size -1) == 0 && i != 0 && i<elements.Count-1)
+                {
+                    Console.WriteLine("RigthToLeft partial sum= [{0}]", elements[i]);
+                    rigthToLeft += elements[i];
+                }
+
+            }
+
+            Console.WriteLine("LeftToRigth total sum = [{0}]", leftToRigth);
+            Console.WriteLine("RigthToLeft total sum = [{0}]", rigthToLeft);
+
+            int difference = 0;
+            if (rigthToLeft > leftToRigth)
+                difference = rigthToLeft - leftToRigth;
+            else
+                difference = leftToRigth - rigthToLeft;
+
+            Console.WriteLine("Difference = [{0}]", difference);
+            return difference;
+        }
+
+        // Receiving a list of lists of integers
+        public static int diagonalDifference2(List<List<int>> arr)
+        {
+            List<int> elements = new List<int>();
+            int size = arr[0].Count;
+            int leftToRigth = 0;
+            int rigthToLeft = 0;
+
+            foreach (List<int> l in arr)
+                elements.AddRange(l);
+
+            for (int i = 0; i < elements.Count; i++)
+            {
+                Console.WriteLine(elements[i]);
+                if (i % (size + 1) == 0 || i == 0)
+                    leftToRigth += elements[i];
+
+                if (i % (size - 1) == 0 && i != 0 && i < elements.Count - 1)
+                    rigthToLeft += elements[i];
+            }
+
+            int difference = 0;
+            if (rigthToLeft > leftToRigth)
+                difference = rigthToLeft - leftToRigth;
+            else
+                difference = leftToRigth - rigthToLeft;
+
+            return difference;
+        }
+
+        public static List<int> countingSort(List<int> arr)
+        {
+
+            int[] result = new int[100];
+            //Array.Clear(result, 0, result.Length);
+
+            for (int i = 0; i < arr.Count; i++)
+            {
+                result[arr[i]] += 1;
+
+            }
+
+            List<int> lst = new List<int>();
+            lst.AddRange(result);
+
+            foreach (var item in lst)
+            {
+                Console.Write("{0},", item);
+            }
+
+            return lst;
         }
     }
 }

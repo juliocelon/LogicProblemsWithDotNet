@@ -86,8 +86,51 @@ namespace Logic
             //long result = Result.getNumber(binary.head);
 
             //LogicProblems.timeConversion("01:02:03PM");
-            LogicProblems.timeConversion("04:02:03PM");
+            //LogicProblems.timeConversion("04:02:03PM");
             //LogicProblems.timeConversion("05:02:03PM");
+
+
+            //List<int> arr = new List<int>();
+            //arr.Add(10);
+            //arr.Add(2);
+            //arr.Add(8);
+            //arr.Add(1);
+            //arr.Add(6);
+            //arr.Add(3);
+            //arr.Add(4);
+
+            //LogicProblems.findMedian(arr);
+            //LogicProblems.findMedian2(arr);
+            //LogicProblems.findMedian3(arr);
+
+            //List<int> arr2 = new List<int>();
+            //arr2.Add(1);
+            //arr2.Add(2);
+            //arr2.Add(3);
+            //arr2.Add(2);
+            //arr.Add(1);
+            //LogicProblems.lonelyinteger(arr);
+
+            //List<int> list = new List<int>() { 1,2,3,4,5,6,7,8,9};
+            //List<int> squareSize = new List<int>() { 3 };
+
+            //List<List<int>> arr3 = new List<List<int>>();
+            //arr3.Add(squareSize);
+            //arr3.Add(list);
+
+            //LogicProblems.diagonalDifference(arr3);
+
+            //List<int> list2 = new List<int>() { 1, 2, 3, 4, 5, 1, 7, 8, 9,10,1,12,13,14,15,1 };
+            //List<int> squareSize2 = new List<int>() { 4 };
+
+            //List<List<int>> arr4 = new List<List<int>>();
+            //arr4.Add(squareSize2);
+            //arr4.Add(list2);
+
+            //LogicProblems.diagonalDifference(arr4);
+
+            List<int> list = new List<int>() { 1,3,5,3,6};
+            LogicProblems.countingSort(list);
         }
     }
 
