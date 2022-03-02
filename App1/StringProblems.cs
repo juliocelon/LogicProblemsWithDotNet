@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 namespace LogicProblems
 {
@@ -95,7 +96,57 @@ namespace LogicProblems
             Console.WriteLine("Is One away: [{0}],[{1}]", message1, message2);
             return true;
         }
+
+ /*
+ * Julius Caesar protected his confidential information by encrypting it using a cipher. 
+ * Caesar's cipher shifts each letter by a number of letters. If the shift takes you past the end of 
+ * the alphabet, just rotate back to the front of the alphabet. In the case of a rotation by 3, w, x, y 
+ * and z would map to z, a, b and c.
+ * 
+ * */
+
+ public static string CaesarCipher(string s, int k)
+ {
+     StringBuilder newMessage = new StringBuilder();
+           
+     for (int i = 0; i < s.Length; i++)
+     {
+         int character = (int)s[i];
+         Console.WriteLine("value=[{0}], intValue=[{1}]", (char)s[i], (int)s[i]);
+
+         int newCharacter = 0;
+         if (character >= 65 && character <= 90)
+         {
+             Console.WriteLine("mayus");
+             if (character + k > 90)
+             {
+                 int difference = 90 - character;
+                 newCharacter = 64 + (k - difference);
+             }
+             else
+                 newCharacter = character + k;
+         }
+         else if (character >= 97 && character <= 122)
+         {
+             if (character + k > 122)
+             {
+                 int difference = 122 - character;
+                 newCharacter = 96 + (k - difference);
+             }
+             else
+                 newCharacter = character + k;
+         }
+         else
+             newCharacter = character;
+
+         Console.WriteLine("newValue = [{0}], intNewValue = [{1}]", (char)newCharacter, newCharacter);
+         newMessage.Append((char)newCharacter);
+     }
+
+     Console.WriteLine("newMessage = [{0}]", newMessage);
+
+     return newMessage.ToString();
+ }
+
     }
-
-
 }

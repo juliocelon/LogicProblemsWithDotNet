@@ -332,12 +332,10 @@ namespace Logic
         {
 
             int[] result = new int[100];
-            //Array.Clear(result, 0, result.Length);
 
             for (int i = 0; i < arr.Count; i++)
             {
                 result[arr[i]] += 1;
-
             }
 
             List<int> lst = new List<int>();
