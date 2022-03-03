@@ -108,7 +108,7 @@ namespace LogicProblems
  public static string CaesarCipher(string s, int k)
  {
      StringBuilder newMessage = new StringBuilder();
-           
+     k = k % 26;
      for (int i = 0; i < s.Length; i++)
      {
          int character = (int)s[i];
