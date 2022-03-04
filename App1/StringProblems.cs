@@ -147,46 +147,42 @@ namespace LogicProblems
 
      return newMessage.ToString();
     }
- 
 
-    public static int palindromeIndex(string s)
+        public static int PalindromeIndex(string s)
     {
-            int lp = 0;
-            int rp = s.Length - 1;
-
-            StringBuilder lm = new StringBuilder();
-            StringBuilder rm = new StringBuilder();
-
-            while (lp <= s.Length/2 && rp >= s.Length/2)
+            for (int i = 0; i < s.Length/2; i++)
             {
-                lm.Append(s[lp]);
-                rm.Append(s[rp]);
-                lp++;
-                rp--;
+                if (s[i] != s[s.Length - 1 - i])
+                {
+                    Console.WriteLine("Lenght = [{0}]", s.Length - 1 - i - i);
+                    if (isPalindrome(s.Substring(i, s.Length - 1 - i - i)))
+                    {
+                        Console.WriteLine("No palindrome");
+                        Console.WriteLine("Index = [{0}]", s.Length - 1 - i);
+                        return s.Length - 1 - i;
+                    }
+                    else
+                    {
+                        Console.WriteLine("No palindrome");
+                        Console.WriteLine("Index = [{0}]", i);
+                        return i;
+                    }
+                }
             }
-
-            Console.WriteLine(lm.ToString());
-            Console.WriteLine(rm.ToString());
-
-            if (lm.ToString() == rm.ToString())
-            {
-                Console.WriteLine("Its a palindromo");
-                return -1;
-            }
-            else
-                Console.WriteLine("Not a palindromo");
-
-            Console.WriteLine("Recorrido");
-            Console.WriteLine("Recorrido");
-
-            for (int i = lm.Length-1; i >= 0; i--)
-            {
-                Console.WriteLine("lm[{0}]", lm[i]);
-            }
-            
-
+            Console.WriteLine("It´s a palindrome");
             return -1;
     }
+
+        public static bool isPalindrome(string input)
+        {
+            Console.WriteLine("Input = [{0}]", input);
+            for (int i = 0; i < input.Length/2; i++)
+            {
+                if (input[i] != input[input.Length - 1 - i])
+                    return false;
+            }
+            return true;
+        }
 
         public static void SumStrings(string one, string two)
         {
