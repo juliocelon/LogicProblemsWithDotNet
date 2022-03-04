@@ -133,6 +133,12 @@ namespace Logic
             LogicProblems.countingSort(list3);
 
             StringProblems.CaesarCipher("www.abc.xy", 87);
+
+            StringProblems.palindromeIndex("abccbb");
+
+            LogicProblems.SumNumber(123);
+
+            StringProblems.SumStrings("999","789");
         }
     }
 

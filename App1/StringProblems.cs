@@ -146,7 +146,81 @@ namespace LogicProblems
      Console.WriteLine("newMessage = [{0}]", newMessage);
 
      return newMessage.ToString();
- }
-
     }
+ 
+
+    public static int palindromeIndex(string s)
+    {
+            int lp = 0;
+            int rp = s.Length - 1;
+
+            StringBuilder lm = new StringBuilder();
+            StringBuilder rm = new StringBuilder();
+
+            while (lp <= s.Length/2 && rp >= s.Length/2)
+            {
+                lm.Append(s[lp]);
+                rm.Append(s[rp]);
+                lp++;
+                rp--;
+            }
+
+            Console.WriteLine(lm.ToString());
+            Console.WriteLine(rm.ToString());
+
+            if (lm.ToString() == rm.ToString())
+            {
+                Console.WriteLine("Its a palindromo");
+                return -1;
+            }
+            else
+                Console.WriteLine("Not a palindromo");
+
+            Console.WriteLine("Recorrido");
+            Console.WriteLine("Recorrido");
+
+            for (int i = lm.Length-1; i >= 0; i--)
+            {
+                Console.WriteLine("lm[{0}]", lm[i]);
+            }
+            
+
+            return -1;
+    }
+
+        public static void SumStrings(string one, string two)
+        {
+            Console.WriteLine("number one=[{0}]", one);
+            Console.WriteLine("number two=[{0}]", two);
+
+            List<string> listSum = new List<string>();
+
+            int extra = 0;
+            for (int i = one.Length - 1; i >= 0; i--)
+            {
+                int sum = int.Parse(one[i].ToString()) + int.Parse(two[i].ToString()) + extra;
+
+                if (sum.ToString().Length == 2 && i>=1)
+                {
+                    extra = 1;
+                    listSum.Add(sum.ToString().Substring(1,1));
+                }
+                else
+                {
+                    extra = 0;
+                    listSum.Add(sum.ToString());
+                }
+            }
+            listSum.Reverse();
+
+            StringBuilder result = new StringBuilder();
+
+            foreach (var item in listSum)
+                result.Append(item);
+
+            Console.WriteLine(result.ToString());
+        }
+
+  }
+
 }
