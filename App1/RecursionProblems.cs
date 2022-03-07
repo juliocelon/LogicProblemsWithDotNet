@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+
 namespace Recursions
 {
     public class RecursionCase
@@ -22,6 +24,39 @@ namespace Recursions
             if (n <= 1)
                 return n;
             return Fibonacci(n - 1) + Fibonacci(n - 2);
+        }
+
+        public static int superDigit(string n, int k)
+        {
+            string newN = repeatString(n, k);
+            Console.WriteLine(">[{0}]", newN);
+
+            int result = superDigitR(newN);
+            return result;
+        }
+
+        public static int superDigitR(string n)
+        {
+            if (n.Length == 1)
+            {
+                return int.Parse(n);
+            }
+
+            int sum = 0;
+            for (int i = 0; i < n.Length; i++)
+            {
+                int num = int.Parse(n[i].ToString());
+                sum += num;
+            }
+            return superDigitR(sum.ToString());
+        }
+
+        public static string repeatString(string n, int k)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < k; i++)
+                sb.Append(n);
+            return sb.ToString();
         }
     }
 }

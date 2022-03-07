@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Logic
 {
@@ -349,15 +350,70 @@ namespace Logic
             return lst;
         }
 
-        public static void SumNumber(int number)
+        public static long sumDigits(long number)
         {
-            int sum = 0;
+            long sum = 0;
             while (number > 0)
             {
                 sum += number % 10;
-                number /= 10;
+                number = number / 10;
             }
-            Console.WriteLine("Sum=[{0}]", sum);
+            return sum;
+        }
+
+        /*
+         We define super digit of an integer x using the following rules:
+
+        Given an integer, we need to find the super digit of the integer.
+
+        If x has only 1 digit, then its super digit is x.
+        Otherwise, the super digit of x  is equal to the super digit of the sum of the digits of x.
+        
+        For example, the super digit of9875  will be calculated as:
+        
+        	super_digit(9875)   	9+8+7+5 = 29 
+        	super_digit(29) 	2 + 9 = 11
+        	super_digit(11)		1 + 1 = 2
+        	super_digit(2)		= 2  
+
+        Function Description
+        
+        Complete the function superDigit in the editor below. It must return the calculated super digit as an integer.
+        
+        superDigit has the following parameter(s):
+        
+        string n: a string representation of an integer
+        int k: the times to concatenate n to make p
+        
+        Returns
+        
+        int: the super digit of n repeated k times
+        
+        Input Format
+        
+        The first line contains two space separated integers, n and k.
+        
+        Constraints
+        
+        1   <=   n   <=   10^100000
+        1  <=   k   <=  10^5
+         */
+
+        public static int superDigit(string n, int k)
+        {
+            long sum = getSum(n);
+            sum = sum * k;
+            while (sum.ToString().Length > 1)
+                sum = getSum(sum.ToString());
+            return (int)sum;
+        }
+
+        public static long getSum(string n)
+        {
+            long sum = 0;
+            for (int i = 0; i < n.Length; i++)
+                sum += int.Parse(n[i].ToString());
+            return sum;
         }
     }
 }

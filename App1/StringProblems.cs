@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace LogicProblems
@@ -148,7 +149,8 @@ namespace LogicProblems
      return newMessage.ToString();
     }
 
-        public static int PalindromeIndex(string s)
+
+    public static int PalindromeIndex(string s)
     {
             for (int i = 0; i < s.Length/2; i++)
             {
@@ -173,50 +175,72 @@ namespace LogicProblems
             return -1;
     }
 
-        public static bool isPalindrome(string input)
+    public static bool isPalindrome(string input)
+    {
+        Console.WriteLine("Input = [{0}]", input);
+        for (int i = 0; i < input.Length/2; i++)
         {
-            Console.WriteLine("Input = [{0}]", input);
-            for (int i = 0; i < input.Length/2; i++)
+            if (input[i] != input[input.Length - 1 - i])
+                return false;
+        }
+        return true;
+    }
+
+    public static void SumStrings(string one, string two)
+    {
+        Console.WriteLine("number one=[{0}]", one);
+        Console.WriteLine("number two=[{0}]", two);
+
+        List<string> listSum = new List<string>();
+
+        int extra = 0;
+        for (int i = one.Length - 1; i >= 0; i--)
+        {
+            int sum = int.Parse(one[i].ToString()) + int.Parse(two[i].ToString()) + extra;
+
+            if (sum.ToString().Length == 2 && i>=1)
             {
-                if (input[i] != input[input.Length - 1 - i])
-                    return false;
+                extra = 1;
+                listSum.Add(sum.ToString().Substring(1,1));
+            }
+            else
+            {
+                extra = 0;
+                listSum.Add(sum.ToString());
+            }
+        }
+        listSum.Reverse();
+
+        StringBuilder result = new StringBuilder();
+
+        foreach (var item in listSum)
+            result.Append(item);
+
+        Console.WriteLine(result.ToString());
+    }
+
+        public static bool gridChallenge(List<string> grid)
+        {
+            for (int i = 0; i < grid.Count ; i++)
+                grid[i] = OrderString(grid[i]);
+
+            for (int i = 0; i < grid[0].Length; i++)
+            {
+                for (int j = 0; j < (grid.Count-1) ; j++)
+                {
+                    if (grid[j][i] > grid[j + 1][i])
+                        return false;
+                }
             }
             return true;
         }
 
-        public static void SumStrings(string one, string two)
+        public static string OrderString(string message)
         {
-            Console.WriteLine("number one=[{0}]", one);
-            Console.WriteLine("number two=[{0}]", two);
-
-            List<string> listSum = new List<string>();
-
-            int extra = 0;
-            for (int i = one.Length - 1; i >= 0; i--)
-            {
-                int sum = int.Parse(one[i].ToString()) + int.Parse(two[i].ToString()) + extra;
-
-                if (sum.ToString().Length == 2 && i>=1)
-                {
-                    extra = 1;
-                    listSum.Add(sum.ToString().Substring(1,1));
-                }
-                else
-                {
-                    extra = 0;
-                    listSum.Add(sum.ToString());
-                }
-            }
-            listSum.Reverse();
-
-            StringBuilder result = new StringBuilder();
-
-            foreach (var item in listSum)
-                result.Append(item);
-
-            Console.WriteLine(result.ToString());
+            char[] a = message.ToCharArray(); //char[] a = message.ToArray(); // Alternative
+            Array.Sort(a); //Array.Reverse(a);
+            return new string(a);
         }
-
-  }
+    }
 
 }
