@@ -488,7 +488,7 @@ namespace Logic
          
          An integer which will be the smallest index of the petrol pump from which we can start the tour. 
         */
-        public static int truckTour(List<List<int>> petrolpumps)
+        public static int TruckTour(List<List<int>> petrolpumps)
         {
             int fuel = 0;
             int indexMin = 0;
