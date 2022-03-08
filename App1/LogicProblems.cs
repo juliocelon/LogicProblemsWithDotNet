@@ -124,7 +124,7 @@ namespace Logic
                     zeros++;
             }
 
-            Console.WriteLine("{0}", positives/totalElements);
+            Console.WriteLine("{0}", positives / totalElements);
             Console.WriteLine("{0}", negatives / totalElements);
             Console.WriteLine("{0}", zeros / totalElements);
         }
@@ -220,7 +220,7 @@ namespace Logic
             }
 
             Console.WriteLine("Median=[{0}]", arr[arr.Count / 2]);
-            return arr[arr.Count/2];
+            return arr[arr.Count / 2];
         }
 
         public static int findMedian2(List<int> arr)
@@ -269,16 +269,16 @@ namespace Logic
             int leftToRigth = 0;
             int rigthToLeft = 0;
 
-            for (int i = 0; i < elements.Count;i++)
+            for (int i = 0; i < elements.Count; i++)
             {
                 Console.WriteLine(elements[i]);
-                if (i % (size + 1) == 0 || i==0)
+                if (i % (size + 1) == 0 || i == 0)
                 {
                     Console.WriteLine("LeftToRigth partial sum= [{0}]", elements[i]);
                     leftToRigth += elements[i];
                 }
 
-                if (i % (size -1) == 0 && i != 0 && i<elements.Count-1)
+                if (i % (size - 1) == 0 && i != 0 && i < elements.Count - 1)
                 {
                     Console.WriteLine("RigthToLeft partial sum= [{0}]", elements[i]);
                     rigthToLeft += elements[i];
@@ -414,6 +414,64 @@ namespace Logic
             for (int i = 0; i < n.Length; i++)
                 sum += int.Parse(n[i].ToString());
             return sum;
+        }
+
+        /*
+         
+         New Year Chaos.  https://www.hackerrank.com/challenges/new-year-chaos/problem
+          
+         It’s New Year’s Day and everyone’s in line for the Wonderland rollercoaster ride! There are a number of people queued up, and each person wears a sticker indicating their initial position in the queue. Initial positions increment by 1 from 1 at the front of the line to at n the back.
+         Any person in the queue can bribe the person directly in front of them to swap positions. If two people swap positions, they still wear the same sticker denoting their original places in line. One person can bribe at most two others. For example, if n = 8 and person 5 bribes person 4, the queue will look like this: 1, 2, 3, 5, 4, 6, 7, 8.
+         Fascinated by this chaotic queue, you decide you must know the minimum number of bribes that took place to get the queue into its current state!
+
+        Function Description
+
+         Complete the function minimumBribes in the editor below. It must print an integer representing the minimum number of bribes necessary, or Too chaotic if the line configuration is not possible.
+         minimumBribes has the following parameter(s):
+
+         q: an array of integers
+
+        Sample Input
+         2
+         5
+         2 1 5 3 4
+         5
+         2 5 1 3 4
+
+         Sample Output
+         3
+         Too chaotic
+
+         */
+
+        public static void minimumBribes(List<int> q)
+        {
+            int totalBribes = 0;
+            for (int i = q.Count - 1; i >= 0; i--)
+            {
+                if (q[i] != i + 1)
+                {
+                    if (i - 1 >= 0 && q[i - 1] == i + 1)
+                    {
+                        q[i - 1] = q[i];
+                        q[i] = i + 1;
+                        totalBribes += 1;
+                    }
+                    else if (i - 2 >= 0 && q[i - 2] == i + 1)
+                    {
+                        q[i - 2] = q[i - 1];
+                        q[i - 1] = q[i];
+                        q[i] = i + 1;
+                        totalBribes += 2;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Too chaotic");
+                        return;
+                    }
+                }
+            }
+            Console.WriteLine("{0}", totalBribes);
         }
     }
 }
