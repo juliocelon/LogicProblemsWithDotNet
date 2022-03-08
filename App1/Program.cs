@@ -136,7 +136,7 @@ namespace Logic
 
 
 
-            LogicProblems.SumNumber(123);
+            //LogicProblems.SumNumber(123);
 
             StringProblems.SumStrings("999", "789");
 
@@ -159,6 +159,29 @@ namespace Logic
 
             LogicProblems.minimumBribes(new List<int> { 2, 1, 5, 3, 4 });
 
+            List<List<int>> petrolpumps = new List<List<int>>();
+            List<int> l1 = new List<int>();
+            l1.Add(1);
+            l1.Add(5);
+
+            List<int> l2 = new List<int>();
+            l2.Add(10);
+            l2.Add(3);
+
+            List<int> l3 = new List<int>();
+            l3.Add(3);
+            l3.Add(4);
+
+            List<int> l4 = new List<int>();
+            l4.Add(10);
+            l4.Add(1);
+
+            petrolpumps.Add(l1);
+            petrolpumps.Add(l2);
+            petrolpumps.Add(l3);
+            petrolpumps.Add(l4);
+
+            LogicProblems.TruckTour(petrolpumps);
         }
     }
 
