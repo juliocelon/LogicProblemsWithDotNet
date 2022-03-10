@@ -58,5 +58,17 @@ namespace Recursions
                 sb.Append(n);
             return sb.ToString();
         }
+
+        // Get Number of
+        public static int numOfDigits = 0;
+
+        public static void GetNumberOfDigits(int value)
+        {
+            if (value > 0)
+            {
+                numOfDigits++;
+                GetNumberOfDigits(value/10);
+            }
+        }
     }
 }
