@@ -69,7 +69,6 @@ namespace LogicProblems
             Console.WriteLine($"pop = [{pop()}]");
             Console.WriteLine($"pop = [{pop()}]");
             Console.WriteLine($"Is empty? = [{empty()}]");
-
         }
     }
 }
