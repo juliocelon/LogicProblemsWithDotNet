@@ -185,6 +185,8 @@ namespace Logic
 
             RecursionCase.GetNumberOfDigits(3234);
             Console.WriteLine("Number of Digits = [{0}]", RecursionCase.numOfDigits);
+
+            StructExercise.Execute();
         }
     }
 
