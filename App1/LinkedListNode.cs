@@ -70,7 +70,7 @@ class SinglyLinkedListPrintHelepr
     }
 }
 
-class Result
+class MaximumQ
 {
 
     /*
@@ -153,6 +153,6 @@ class Solution
             int binaryItem = Convert.ToInt32(Console.ReadLine().Trim());
             binary.InsertNode(binaryItem);
         }
-        long result = Result.getNumber(binary.head);
+        long result = MaximumQ.getNumber(binary.head);
     }
 }

@@ -188,18 +188,19 @@ namespace Logic
 
             //StructExercise.Execute();
 
-            SinglyLinkedList2 ll2 = new SinglyLinkedList2();
+            //SinglyLinkedList2 ll2 = new SinglyLinkedList2();
 
-            ll2.AddNode(1);
-            ll2.AddNode(2);
-            ll2.AddNode(3);
-            ll2.AddNode(4);
+            //ll2.AddNode(1);
+            //ll2.AddNode(2);
+            //ll2.AddNode(3);
+            //ll2.AddNode(4);
 
-            ll2.Print();
-            Console.WriteLine("-------");
-            ll2.Delete(3);
+            //ll2.Print();
+            //Console.WriteLine("-------");
+            //ll2.Delete(3);
+            //ll2.Print();
 
-            ll2.Print();
+            MaximumQuality.Start();
         }
     }
 
