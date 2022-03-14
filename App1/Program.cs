@@ -203,7 +203,9 @@ namespace Logic
 
             //MaximumQuality.Start();
 
-            SinglyLinkedList2.Start();
+            //SinglyLinkedList2.Start();
+
+            QueueExercise.Start();
         }
     }
 
