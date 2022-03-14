@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Arrays;
 using Recursions;
 using LogicProblems;
+using LinkedListProblems;
 
 namespace Logic
 {
@@ -200,7 +201,9 @@ namespace Logic
             //ll2.Delete(3);
             //ll2.Print();
 
-            MaximumQuality.Start();
+            //MaximumQuality.Start();
+
+            SinglyLinkedList2.Start();
         }
     }
 
