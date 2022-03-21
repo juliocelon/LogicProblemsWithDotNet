@@ -191,10 +191,10 @@ namespace Logic
 
             SinglyLinkedList2 ll2 = new SinglyLinkedList2();
 
-            ll2.AddNode(1);
-            ll2.AddNode(2);
-            ll2.AddNode(3);
-            ll2.AddNode(4);
+            //ll2.AddNode(1);
+            //ll2.AddNode(2);
+            //ll2.AddNode(3);
+            //ll2.AddNode(4);
 
             ll2.Print();
             Console.WriteLine("-------");
@@ -208,6 +208,8 @@ namespace Logic
             QueueExercise.Start();
 
             BraketsChallenge.Start();
+
+            CleaningJSON.Start();
         }
     }
 
