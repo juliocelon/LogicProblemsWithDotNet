@@ -504,5 +504,33 @@ namespace Logic
             Console.WriteLine(indexMin);
             return indexMin;
         }
+
+        // It´s a variation of TruckTour, the problem is on coderbyte
+        public static string ArrayChallenge(string[] strArr)
+        {
+            int gas = 0;
+            int indexMin = 1;
+
+            string[] newArr = new string[strArr.Length - 1];
+            for (int i = 1, j = 0; i < strArr.Length; i++, j++)
+                newArr[j] = strArr[i];
+
+            for (int i = 0; i < newArr.Length; i++)
+            {
+                string[] gasDistance = newArr[i].Split(":");
+                int currentGas = int.Parse(gasDistance[0]);
+                int distance = int.Parse(gasDistance[1]);
+                gas += currentGas - distance;
+
+                if (gas <= 0)
+                {
+                    indexMin = i + 1;
+                    gas = 0;
+                }
+            }
+            if (gas <= 0)
+                return "impossible";
+            return (indexMin + 1).ToString();
+        }
     }
 }
