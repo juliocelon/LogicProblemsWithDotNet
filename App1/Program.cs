@@ -210,6 +210,8 @@ namespace Logic
             //BraketsChallenge.Start();
 
             //CleaningJSON.Start();
+
+            CoderByteMWS.Start();
         }
     }
 
