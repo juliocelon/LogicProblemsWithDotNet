@@ -12,55 +12,6 @@ namespace LogicProblems
             Console.WriteLine(MinWindowSubstring(strArr));
         }
 
-        public static string MinWindowSubstring2(string[] strArr )
-        {
-
-            //Console.WriteLine("minWord = {0}", findSubString(strArr[0], strArr[1]));
-
-            //List<string> words = new List<string>();
-            //string keyWord = strArr[1];
-            //string temp = string.Empty;
-
-            //for(int j=0;j< strArr[0].Length;j++)
-            //for (int i = j; i < strArr[0].Length; i++)
-            //{
-            //    char currentCharacter = strArr[0][i];
-            //    if (keyWord.Contains(currentCharacter))
-            //    {
-            //        temp += strArr[0][i];
-            //        int index = keyWord.IndexOf(currentCharacter);
-            //        keyWord = keyWord.Remove(index, 1);
-
-            //        if (keyWord.Length == 0)
-            //        {
-            //            words.Add(temp);
-            //            temp = string.Empty;
-            //            keyWord = strArr[1];
-            //        }
-            //    }
-            //    else if (temp.Length > 0)
-            //    {
-            //        temp += strArr[0][i];
-            //    }
-            //}
-
-            //string minWord = string.Empty;
-            //foreach (var item in words)
-            //{
-            //    if (minWord.Length == 0)
-            //        minWord = item;
-
-            //    if (minWord.Length > item.Length)
-            //        minWord = item;
-
-            //    Console.WriteLine(item);
-            //}
-
-            //Console.WriteLine("minWord = {0}", minWord);
-
-            return "ok";
-        }
-
         static String MinWindowSubstring(string[] strArr)
         {
             String input = strArr[0];
