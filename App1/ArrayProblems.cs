@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Arrays
 {
@@ -84,7 +85,7 @@ namespace Arrays
         public static char GetMostFrecuentCharacter(string text)
         {
             Hashtable ht = new Hashtable();
-            char character = ' ' ;
+            char character = ' ';
             int amount = 0;
 
             for (int i = 0; i < text.Length; i++)
@@ -488,10 +489,10 @@ namespace Arrays
                 Console.WriteLine(">>counter=[{0}]", subsequenceCounter);
                 Console.WriteLine(">>maxcounter=[{0}]", maxSubsecuenceCounter);
 
-                if (text[i] == vowels[vowelsPointer] )
+                if (text[i] == vowels[vowelsPointer])
                 {
                     Console.WriteLine("text[i] == vowels[vowelsPointer]");
-                    if (vowels[vowelsPointer] == 'u' && i==text.Length-1)
+                    if (vowels[vowelsPointer] == 'u' && i == text.Length - 1)
                     {
                         Console.WriteLine("vowels[vowelsPointer] == 'u' && i==text.Length-1");
                         subsequenceCounter++;
@@ -510,48 +511,48 @@ namespace Arrays
                 else
                 {
                     Console.WriteLine("ELSE text[i] == vowels[vowelsPointer]");
-                        if (i == text.Length - 1)
-                        {
+                    if (i == text.Length - 1)
+                    {
                         Console.WriteLine("i == text.Length - 1");
-                            if (vowels[(vowelsPointer+1)%vowels.Length] == 'u')
-                            {
+                        if (vowels[(vowelsPointer + 1) % vowels.Length] == 'u')
+                        {
                             Console.WriteLine("vowels[vowelsPointer] == 'u'");
                             subsequenceCounter++;
+                            Console.WriteLine("Ya esta en la u");
+                            if (maxSubsecuenceCounter < subsequenceCounter)
+                                maxSubsecuenceCounter = subsequenceCounter;
+                        }
+                        subsequenceOn = false;
+                        vowelsPointer = 0;
+                        subsequenceCounter = 0;
+                    }
+                    else
+                    {
+                        if (text[i] == vowels[(vowelsPointer + 1) % vowels.Length])
+                        {
+                            Console.WriteLine("siguiente vocal ok");
+                            subsequenceOn = true;
+                            subsequenceCounter++;
+                            vowelsPointer++;
+                            if (vowels[vowelsPointer] == 'u' && i == text.Length - 1)
+                            {
+                                Console.WriteLine("vowels[vowelsPointer] == 'u' && i==text.Length-1");
+                                subsequenceCounter++;
                                 Console.WriteLine("Ya esta en la u");
                                 if (maxSubsecuenceCounter < subsequenceCounter)
                                     maxSubsecuenceCounter = subsequenceCounter;
+                                subsequenceOn = false;
                             }
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Termina la secuencia");
                             subsequenceOn = false;
                             vowelsPointer = 0;
                             subsequenceCounter = 0;
                         }
-                        else
-                        {
-                            if (text[i] == vowels[(vowelsPointer + 1)%vowels.Length])
-                            {
-                                Console.WriteLine("siguiente vocal ok");
-                                subsequenceOn = true;
-                                subsequenceCounter++;
-                                vowelsPointer++;
-                                if (vowels[vowelsPointer] == 'u' && i == text.Length - 1)
-                                {
-                                    Console.WriteLine("vowels[vowelsPointer] == 'u' && i==text.Length-1");
-                                    subsequenceCounter++;
-                                    Console.WriteLine("Ya esta en la u");
-                                    if (maxSubsecuenceCounter < subsequenceCounter)
-                                        maxSubsecuenceCounter = subsequenceCounter;
-                                subsequenceOn = false;
-                            }
-
-                            }
-                            else
-                            {
-                                Console.WriteLine("Termina la secuencia");
-                                subsequenceOn = false;
-                                vowelsPointer = 0;
-                                subsequenceCounter = 0;
-                            }
-                        }
+                    }
                 }
             }
 
@@ -563,9 +564,9 @@ namespace Arrays
         public static void Piramid()
         {
             int space, startsLength = 1, numberRows;
-            Console.WriteLine("Enter row count : ");       
-            numberRows = Convert.ToInt32(Console.ReadLine());   
-            space = numberRows - 1;                            
+            Console.WriteLine("Enter row count : ");
+            numberRows = Convert.ToInt32(Console.ReadLine());
+            space = numberRows - 1;
 
             for (int i = 1; i <= numberRows; i++)
             {
@@ -584,5 +585,59 @@ namespace Arrays
             Console.ReadLine();
         }
 
+        /*
+            * 
+            * Given an array of integers and a target value, determine the number of pairs of array elements 
+            * that have a difference equal to the target value.
+            * 
+            * Example
+            * k=1
+            * arr=[1,2,3,4]
+            * 
+            * There´re that differ by k=1: 2-1,3-2,4-3. Return 3.
+            * 
+            * Complete the 'pairs' function below.
+            *
+            * The function is expected to return an INTEGER.
+            * The function accepts following parameters:
+            *  1. INTEGER k
+            *  2. INTEGER_ARRAY arr
+         */
+        public static void startPairs()
+        {
+            List<int> arr = new List<int> { 1,3,2,4};
+
+            Console.WriteLine(pairs(1,arr));
+        }
+
+
+        public static int pairs(int k, List<int> arr)
+        {
+            int counter = 0;
+
+            HashSet<int> hs = new HashSet<int>(arr);
+
+            for (int i = 0; i < arr.Count; i++)
+            {
+                int numberToFind = 0;
+                numberToFind = arr[i] + k;
+                if (hs.Contains(numberToFind))
+                    counter++;
+            }
+
+            // Slow alternative:
+            //for (int i = 0; i < arr.Count; i++)
+            //{
+            //    for (int j = i+1; j < arr.Count; j++)
+            //    {
+            //        int difference = arr[i] - arr[j];
+            //        if (difference == k || difference == -k)
+            //        {
+            //            counter += 1;
+            //        }
+            //    }
+            //}
+            return counter;
+        }
     }
 }
