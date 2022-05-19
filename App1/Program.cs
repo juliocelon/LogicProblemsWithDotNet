@@ -215,7 +215,10 @@ namespace Logic
 
             //Rpn.Start();
 
-            ArrayCase.startPairs();
+            //ArrayCase.startPairs();
+            //TextEditor.Start();
+
+            SandBox.Start();
         }
     }
 
